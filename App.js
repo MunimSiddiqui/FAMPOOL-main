@@ -9,6 +9,7 @@ import Registration from "./Screens/Registration";
 import HomePage from "./Screens/HomePage";
 import AvailableRide from "./Screens/AvailableRide";
 import PostRide from "./Screens/PostRide";
+import Notification from "./Screens/Notification";
 
 
 export default function App() {
@@ -41,6 +42,11 @@ export default function App() {
               name="PostRide"
               component={PostRide}
               options={{ title: 'PostRide' , headerShown: false }}
+              />
+                <Stack.Screen
+              name="Notification"
+              component={Notification}
+              options={{ title: 'Notification' , headerShown: false }}
               />
       </Stack.Navigator>
     </NavigationContainer>
