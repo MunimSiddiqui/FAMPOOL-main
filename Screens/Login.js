@@ -117,31 +117,32 @@
 
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Make sure to install expo icons or replace with your own
+import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient'; // Make sure to install this
 
 const Login = (props) => {
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <Text style={styles.loginText}>Login</Text>
-      <View style={styles.loginContainer}>
-        <Ionicons name="ios-person-circle-outline" size={120} color="white" />
-        <Text style={styles.welcomeBackText}>Welcome Back</Text>
-        <Text style={styles.loginToYourAccountText}>Login to your account</Text>
+    <LinearGradient colors={['#86ba90', '#5e8c61', '#2e5734']} style={styles.container}>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.loginCard}>
+        <Ionicons name="ios-person-circle-outline" size={120} color="#fff" style={styles.iconStyle} />
+        <Text style={styles.loginText}>Login</Text>
         <View style={styles.inputContainer}>
-          <Ionicons name="mail-outline" size={24} color="gray" />
+          <Ionicons name="mail-outline" size={24} color="#fff" />
           <TextInput 
             style={styles.inputField} 
             placeholder="Email / Username" 
+            placeholderTextColor="#ccc"
             keyboardType="email-address" 
             autoCapitalize="none" 
           />
         </View>
         <View style={styles.inputContainer}>
-          <Ionicons name="key-outline" size={24} color="gray" />
+          <Ionicons name="key-outline" size={24} color="#fff" />
           <TextInput 
             style={styles.inputField} 
             placeholder="Password" 
+            placeholderTextColor="#ccc"
             secureTextEntry={true} 
           />
         </View>
@@ -151,107 +152,90 @@ const Login = (props) => {
         <TouchableOpacity style={styles.loginButton} onPress={() => alert("Logged In")}>
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
-        <View style={styles.signupContainer}>
-          <Text style={styles.dontHaveAccountText}>Don't have an account?</Text>
+        <View style={styles.signupPrompt}>
+          <Text style={styles.signupText}>Don't have an account?</Text>
           <TouchableOpacity onPress={() => props.navigation.navigate("Registration")}>
-            <Text style={styles.signupText}>Signup</Text>
+            <Text style={styles.signupButtonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f0f0f0',
+    alignItems: 'center',
+  },
+  loginCard: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    width: '90%',
+  },
+  iconStyle: {
+    marginBottom: 20,
   },
   loginText: {
-    color: '#333',
-    fontSize: 36,
+    fontSize: 30,
+    color: '#fff',
     fontWeight: 'bold',
-    marginVertical: 10,
-  },
-  loginContainer: {
-    backgroundColor: '#32cd32',
-    width: '90%',
-    borderRadius: 20,
-    paddingVertical: 40,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    elevation: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-  },
-  welcomeBackText: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: 'white',
-    marginTop: 10,
-  },
-  loginToYourAccountText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '500',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
+    borderBottomWidth: 1,
+    borderBottomColor: '#fff',
+    paddingBottom: 10,
+    marginBottom: 20,
     width: '100%',
-    borderRadius: 10,
-    marginBottom: 15,
-    paddingHorizontal: 15,
   },
   inputField: {
     flex: 1,
-    height: 50,
-    fontSize: 16,
-    color: 'gray',
+    fontSize: 18,
     marginLeft: 10,
+    color: '#fff',
   },
   forgotPasswordContainer: {
     alignSelf: 'flex-end',
     marginBottom: 20,
   },
   forgotPasswordText: {
-    color: 'white',
-    fontWeight: '500',
+    color: '#fff',
     fontSize: 16,
   },
   loginButton: {
-    backgroundColor: '#1e90ff',
-    padding: 15,
-    borderRadius: 10,
     width: '100%',
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 50,
     alignItems: 'center',
     marginBottom: 20,
   },
   loginButtonText: {
-    color: 'white',
+    color: '#86ba90', // Adjusted to match the green theme
     fontSize: 18,
     fontWeight: 'bold',
   },
-  signupContainer: {
+  signupPrompt: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-  },
-  dontHaveAccountText: {
-    color: 'white',
-    fontSize: 16,
+    marginTop: 20,
   },
   signupText: {
-    color: '#1e90ff',
-    fontWeight: 'bold',
+    color: '#fff',
     fontSize: 16,
-    marginLeft: 5,
+    marginRight: 5,
+  },
+  signupButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
   },
 });
 
