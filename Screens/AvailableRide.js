@@ -100,12 +100,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f2f2f2',
     paddingHorizontal: 10,
-    margin: 10,
+    margin: 40,
     borderRadius: 25,
   },
   searchInput: {
     flex: 1,
-    padding: 10,
+    padding: 15,
   },
   scrollView: {
     flex: 1,
